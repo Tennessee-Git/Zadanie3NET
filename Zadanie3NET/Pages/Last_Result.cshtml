@@ -1,0 +1,15 @@
+﻿@page
+@model Last_ResultModel
+@{
+    ViewData["Title"] = "Last Result";
+}
+
+<h1 class="display-4">Ostatni Fizzbuzz</h1>
+@if (Model.Fizzbuzz != null)
+{
+    <p>Liczba: @Model.Fizzbuzz.Input</p>
+    <p>Otrzymano: @Model.Fizzbuzz.Output</p>
+    <p>Data: @Model.Fizzbuzz.Time</p>
+}
+
+
