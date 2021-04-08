@@ -10,7 +10,6 @@ namespace Zadanie3NET.Forms
     {
         [Range(1, 1000)]
         [Required(ErrorMessage = "Pole wymagane!")]
-        [DataType(DataType.Text)]
         public int Input { get; set; }
 
         public string Output { get; set; }
