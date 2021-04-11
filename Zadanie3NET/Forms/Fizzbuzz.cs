@@ -15,10 +15,13 @@ namespace Zadanie3NET.Forms
             Time = DateTime.Now;
         }
 
+        public int Id { get; set; }
+
         [Range(1, 1000)]
         [Required(ErrorMessage = "Pole wymagane!")]
         public int Input { get; set; }
 
+        [MaxLength(8)]
         public string Output { get; set; }
 
         public DateTime Time { get; set; }
