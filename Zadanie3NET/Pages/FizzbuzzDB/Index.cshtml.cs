@@ -18,11 +18,13 @@ namespace Zadanie3NET.Pages.FizzbuzzDB
             _context = context;
         }
 
-        public IList<Fizzbuzz> Fizzbuzz { get;set; }
+        public IList<Fizzbuzz> FizzbuzzList { get;set; }
 
         public async Task OnGetAsync()
         {
-            Fizzbuzz = await _context.Fizzbuzzes.ToListAsync();
+           // var Top10Fizzbuzz = _context.Fizzbuzzes.OrderByDescending(u => u.Time).Take(10);
+            FizzbuzzList = await _context.Fizzbuzzes.OrderByDescending(u => u.Time).Take(10).ToListAsync();
+            //FizzbuzzList = Top10Fizzbuzz.ToList();
         }
     }
 }

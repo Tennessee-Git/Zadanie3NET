@@ -2,31 +2,28 @@
 @model Zadanie3NET.Pages.FizzbuzzDB.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Database";
 }
 
-<h1>Index</h1>
+<h1 class="display-4">Ostatnie 10 Fizzbuzz'ów</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Fizzbuzz[0].Input)
+                @Html.DisplayNameFor(model => model.FizzbuzzList[0].Input)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fizzbuzz[0].Output)
+                @Html.DisplayNameFor(model => model.FizzbuzzList[0].Output)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fizzbuzz[0].Time)
+                @Html.DisplayNameFor(model => model.FizzbuzzList[0].Time)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Fizzbuzz) {
+@foreach (var item in Model.FizzbuzzList) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Input)
@@ -38,7 +35,6 @@
                 @Html.DisplayFor(modelItem => item.Time)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>

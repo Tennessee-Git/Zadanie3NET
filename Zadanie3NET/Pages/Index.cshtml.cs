@@ -26,10 +26,7 @@ namespace Zadanie3NET.Pages
         }
 
         public void OnGet()
-        {
-            if (Fizzbuzz != null)
-                FizzbuzzList = _context.Fizzbuzzes.ToList();
-        }
+        { }
 
         public IActionResult OnPost()
         {
@@ -38,6 +35,8 @@ namespace Zadanie3NET.Pages
                 Fizzbuzz.DefineOutputAndTime();
                 HttpContext.Session.SetString("SessionFizzbuzz", JsonConvert.SerializeObject(Fizzbuzz));
                 ViewData["result"] = $"Otrzymano: {Fizzbuzz.Output}";
+                _context.Add(Fizzbuzz);
+                _context.SaveChanges();
             }
             return Page();
         }
