@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20210505124750_username.cs" />
+    <Compile Remove="Migrations\20210505124750_username.Designer.cs" />
     <Compile Remove="Migrations\AuthDB\20210505102408_test2.cs" />
     <Compile Remove="Migrations\AuthDB\20210505102408_test2.Designer.cs" />
   </ItemGroup>

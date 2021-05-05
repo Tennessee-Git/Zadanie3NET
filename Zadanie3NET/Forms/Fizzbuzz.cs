@@ -26,6 +26,9 @@ namespace Zadanie3NET.Forms
 
         public DateTime Time { get; set; }
 
+        [MaxLength(15)]
+        public string UserName { get; set; }
+
         public void DefineOutputAndTime()
         {
             

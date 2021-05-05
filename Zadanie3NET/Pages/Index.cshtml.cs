@@ -8,6 +8,8 @@ using Zadanie3NET.Forms;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using Zadanie3NET.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace Zadanie3NET.Pages
 {
@@ -34,6 +36,7 @@ namespace Zadanie3NET.Pages
         {
             if (ModelState.IsValid)
             {
+                Fizzbuzz.UserName = HttpContext.User.Identity.Name;
                 Fizzbuzz.DefineOutputAndTime();
                 HttpContext.Session.SetString("SessionFizzbuzz", JsonConvert.SerializeObject(Fizzbuzz));
                 ViewData["result"] = $"Otrzymano: {Fizzbuzz.Output}";

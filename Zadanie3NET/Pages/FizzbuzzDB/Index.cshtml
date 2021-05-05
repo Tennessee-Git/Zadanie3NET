@@ -1,10 +1,11 @@
 ﻿@page
 @model Zadanie3NET.Pages.FizzbuzzDB.IndexModel
-
 @{
     ViewData["Title"] = "Database";
 }
-
+@using Microsoft.AspNetCore.Identity
+@using Zadanie3NET.Areas.Identity.Data
+@inject UserManager<FizzbuzzUser> UserManager
 <h1 class="display-4">Ostatnie 20 Fizzbuzz'ów</h1>
 
 <table class="table">
@@ -23,22 +24,28 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.FizzbuzzList) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Input)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Output)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>
-            <td>
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.FizzbuzzList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Input)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Output)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                    @if (item.UserName == UserManager.GetUserName(User))
+                    {
+                        <a> |</a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
