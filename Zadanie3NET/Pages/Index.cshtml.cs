@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Zadanie3NET.Pages
 {
-    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
@@ -36,7 +35,11 @@ namespace Zadanie3NET.Pages
         {
             if (ModelState.IsValid)
             {
-                Fizzbuzz.UserName = HttpContext.User.Identity.Name;
+                if (HttpContext.User.Identity.Name != null)
+                    Fizzbuzz.UserName = HttpContext.User.Identity.Name;
+                else
+                    Fizzbuzz.UserName = null;
+
                 Fizzbuzz.DefineOutputAndTime();
                 HttpContext.Session.SetString("SessionFizzbuzz", JsonConvert.SerializeObject(Fizzbuzz));
                 ViewData["result"] = $"Otrzymano: {Fizzbuzz.Output}";

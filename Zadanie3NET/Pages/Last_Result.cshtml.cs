@@ -11,7 +11,6 @@ using Zadanie3NET.Forms;
 
 namespace Zadanie3NET.Pages
 {
-    [Authorize]
     public class Last_ResultModel : PageModel
     {
         [BindProperty]
