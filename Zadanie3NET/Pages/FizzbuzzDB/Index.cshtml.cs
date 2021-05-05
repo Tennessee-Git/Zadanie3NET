@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using Zadanie3NET.Forms;
 
 namespace Zadanie3NET.Pages.FizzbuzzDB
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly Zadanie3NET.Forms.FizzbuzzContext _context;
@@ -22,9 +24,7 @@ namespace Zadanie3NET.Pages.FizzbuzzDB
 
         public async Task OnGetAsync()
         {
-           // var Top10Fizzbuzz = _context.Fizzbuzzes.OrderByDescending(u => u.Time).Take(10);
-            FizzbuzzList = await _context.Fizzbuzzes.OrderByDescending(u => u.Time).Take(10).ToListAsync();
-            //FizzbuzzList = Top10Fizzbuzz.ToList();
+           FizzbuzzList = await _context.Fizzbuzzes.OrderByDescending(u => u.Time).Take(20).ToListAsync();
         }
     }
 }

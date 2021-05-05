@@ -7,9 +7,11 @@ using Newtonsoft.Json;
 using Zadanie3NET.Forms;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Zadanie3NET.Pages
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;

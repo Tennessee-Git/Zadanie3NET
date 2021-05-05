@@ -1,13 +1,13 @@
 ﻿@{
     Layout = "/Pages/Shared/_layout.cshtml";
 }
-<div class="row">
-    <div class="col-md-6 offset-md-3">
-        <div class="card login-logout-tab">
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <div class="card">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
-                        <a class="nav-link" href='/Identity/Account/Login'>Sign In</a>
+                        <a class="nav-link" href='/Identity/Account/Login'>Log In</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href='/Identity/Account/Register'>Sign Up</a>
@@ -15,7 +15,7 @@
                 </ul>
             </div>
             <div class="card-body">
-                <div class="row">
+                <div class="row mt-n4">
                     <div class="col-md-12">
                         @RenderBody()
                     </div>
@@ -27,4 +27,15 @@
 
 @section Scripts{
     @RenderSection("Scripts", required: false)
+    <script>
+        $(function () {
+            var current = location.pathname;
+            $('.nav-tabs li a').each(function () {
+                var $this = $(this);
+                if (current.indexOf($this.attr('href')) !== -1) {
+                    $this.addClass('active');
+                }
+            })
+        })
+    </script>
 }
