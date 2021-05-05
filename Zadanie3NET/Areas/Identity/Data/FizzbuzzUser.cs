@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+
+namespace Zadanie3NET.Areas.Identity.Data
+{
+    // Add profile data for application users by adding properties to the FizzbuzzUser class
+    public class FizzbuzzUser : IdentityUser
+    {
+        [PersonalData]
+        [Column(TypeName ="nvarchar(15)")]
+        public string Login { get; set; }
+    }
+}
