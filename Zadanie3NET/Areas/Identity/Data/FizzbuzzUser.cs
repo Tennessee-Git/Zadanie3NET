@@ -11,7 +11,7 @@ namespace Zadanie3NET.Areas.Identity.Data
     public class FizzbuzzUser : IdentityUser
     {
         [PersonalData]
-        [Column(TypeName ="nvarchar(15)")]
+        [Column(TypeName = "nvarchar(15)")]
         public string Login { get; set; }
     }
 }

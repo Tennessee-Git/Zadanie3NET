@@ -47,6 +47,12 @@ namespace Zadanie3NET.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [DataType(DataType.Text)]
+            [MaxLength(15)]
+            [Display(Name = "Login")]
+            public string Login { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -71,11 +77,11 @@ namespace Zadanie3NET.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new FizzbuzzUser { UserName = Input.Email, Email = Input.Email };
+                var user = new FizzbuzzUser { UserName = Input.Login, Email = Input.Email, Login = Input.Login };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
